@@ -5,9 +5,28 @@
 <li class="breadcrumb-item active" aria-current="page">Book List</li>
 {% endblock breadcrumb %}
 
+<div class="row">
+
+</div>
+
 {% block content %}
 <h1>Books</h1>
-{% for book in queryset %}
-<p><a href="{% url 'books:book_detail' book.slug %}">{{ book }}</a></p>
-{% endfor %}
+<hr>
+<div class="row">
+    {% for book in queryset %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ book.publication_date }}</h6>
+            <p class="card-text">
+                {% for author in book.authors.all %}
+                <span>{{ author }}</span>
+                {% if book.authors.count > 1 %} | {% endif %}
+                {% endfor %}
+            </p>
+            <a href="{{ book.get_absolute_url }}" class="card-link">{{ book }}</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

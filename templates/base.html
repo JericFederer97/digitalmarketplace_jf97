@@ -12,14 +12,16 @@
 </head>
 
 <body>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            {% block breadcrumb %}
-            {% endblock breadcrumb %}
-        </ol>
-    </nav>
-    {% block content %}
-    {% endblock content %}
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% block breadcrumb %}
+                {% endblock breadcrumb %}
+            </ol>
+        </nav>
+        {% block content %}
+        {% endblock content %}
+    </div>
 
     <!-- JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
