@@ -38,8 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # Crispy forms
+    'crispy_forms',
+
     # Apps
     'books',
+    'shopping_cart',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +135,19 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
+# Allauth
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = "none"
+LOGIN_REDIRECT_URL = "/"
+
+# Crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Stripe settings
+STRIPE_PUBLISH_KEY = 'pk_test_JEROYKUlIa2yHIlTau89HZ8x00qHCb9rhr'
+STRIPE_SECRET_KEY = 'sk_test_eYRgRT1lEwQe0oobJSQcXiDK00P9CkUOe4'
